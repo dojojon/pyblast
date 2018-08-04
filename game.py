@@ -20,7 +20,7 @@ player.rect.y = SCREEN_HEIGHT - 64
 all_sprites_list = pygame.sprite.Group()
 all_sprites_list.add(player)
 
-enemyFactory = EnemyFactory(SCREEN_WIDTH, all_sprites_list, bullet_list)
+enemyFactory = EnemyFactory(SCREEN_WIDTH, SCREEN_HEIGHT, all_sprites_list, bullet_list)
 
 clock=pygame.time.Clock()
 
