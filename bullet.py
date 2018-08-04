@@ -17,7 +17,8 @@ class Bullet(pygame.sprite.Sprite):
 
         self.rect.x = originX - self.rect.width / 2
         self.rect.y = originY 
-        print(self.rect.width)
 
     def update(self):
         self.rect.y += SPEED
+        if self.rect.y < 0:
+            self.kill()

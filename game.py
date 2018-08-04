@@ -44,7 +44,6 @@ while not done:
         all_sprites_list.draw(screen)
         bullets.draw(screen)
 
-
         pygame.display.flip()
 
         clock.tick(60)
