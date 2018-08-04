@@ -1,4 +1,5 @@
 import pygame
+from bullet import Bullet
 
 WHITE = (255, 255, 255)
 SPEED = 4
@@ -6,7 +7,7 @@ SPEED = 4
 class Player(pygame.sprite.Sprite):
     #This class represents a car. It derives from the "Sprite" class in Pygame.
     
-    def __init__(self, screenWidth):
+    def __init__(self, screenWidth, bulletGroup):
         # Call the parent class (Sprite) constructor
         super().__init__()
         
@@ -18,13 +19,19 @@ class Player(pygame.sprite.Sprite):
         # Fetch the rectangle object that has the dimensions of the image.
         self.rect = self.image.get_rect()
 
+        self.bulletGroup = bulletGroup
+
 
     def update(self):
+
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
             self.moveLeft()
-        if keys[pygame.K_RIGHT]:
+        elif keys[pygame.K_RIGHT]:
             self.moveRight()
+
+        if keys[pygame.K_SPACE]:
+            self.fire()
 
         if self.rect.x < 0:
             self.rect.x = 0
@@ -36,3 +43,7 @@ class Player(pygame.sprite.Sprite):
 
     def moveRight(self):
         self.rect.x += SPEED
+
+    def fire(self):
+        bullet = Bullet(self.rect.centerx, self.rect.y)
+        self.bulletGroup.add(bullet)
