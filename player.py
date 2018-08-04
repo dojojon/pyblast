@@ -1,6 +1,7 @@
 import pygame
 
 WHITE = (255, 255, 255)
+SPEED = 4
 
 class Player(pygame.sprite.Sprite):
     #This class represents a car. It derives from the "Sprite" class in Pygame.
@@ -31,7 +32,7 @@ class Player(pygame.sprite.Sprite):
             self.rect.x = self.screenWidth - self.rect.width
 
     def moveLeft(self):
-        self.rect.x -= 1
+        self.rect.x -= SPEED
 
     def moveRight(self):
-        self.rect.x += 1
+        self.rect.x += SPEED
